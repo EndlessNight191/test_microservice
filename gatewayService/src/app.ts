@@ -30,7 +30,6 @@ class App {
   }
 
   public listen() {
-    /*RedisService.connect();*/
     this.app.listen(this.port, () => {
       logger.info(`=================================`);
       logger.info(`======= ENV: ${this.env} =======`);

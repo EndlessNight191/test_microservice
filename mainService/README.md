@@ -27,18 +27,17 @@ Install my-project with npm
 ```bash
   npm i
 ```
-запуск миграций, сидов
+запуск миграций
 ```bash
   npm run prisma:generate
   npm run prisma:migrate
-  npm run prisma:seeds
 ```
 
 ## .env
 ```bash
-DATABASE_URL=postgresql://postgres:123456@127.0.0.1:5432/test_tusk_prisma
+DATABASE_URL=mysql://root:123456@127.0.0.1:3306/test_microservice
 ```
 
 Дополнительно зайди по пути /src/prisma/schema.prisma и на строчке номер укажите ссылку DATABASE_URL
 ## ROUTES
-Документация пока не написано, актуальные запросы указаны в виду коллекции postman в корне проекта ("testPrisma.postman_collection.json")
+Актуальные запросы указаны в коллекции postman в корне проекта ("testPrisma.postman_collection.json")

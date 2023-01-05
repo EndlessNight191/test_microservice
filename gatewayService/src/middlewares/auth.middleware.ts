@@ -7,7 +7,10 @@ const authMiddleware = catchAsync(async (req: Request, res: Response, next: Next
   const isProvided: string | null = req.headers.authorization && req.headers.authorization.startsWith("Bearer");
   if (!isProvided) throw new HttpException(401, "Token not provided");
   const providedToken = req.headers.authorization.split(' ')[1];
-  const configToken = {headers: {authorization: `Bearer ${providedToken}`}};
+  const configToken = {headers: {
+      authorization: `Bearer ${providedToken}`,
+      "Content-Type": 'application/x-www-form-urlencoded'
+  }};
   req.configToken = configToken;
   next()
 })
