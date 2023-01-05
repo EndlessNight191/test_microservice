@@ -16,7 +16,7 @@ class RandomPhraseRoute implements Routes {
   private initializeRoutes() {
     this.router.post(`${this.path}/signIn`, this.generalController.signIn);
     this.router.post(`${this.path}/signUp`, this.generalController.signUp);
-    this.router.put(`${this.path}/logout`, this.authMiddleware, this.generalController.logout);
+    this.router.get(`${this.path}/logout`, this.authMiddleware, this.generalController.logout);
 
     this.router.get(`${this.path}/latency`, this.authMiddleware, this.generalController.latency);
     this.router.get(`${this.path}/info`, this.authMiddleware, this.generalController.info);

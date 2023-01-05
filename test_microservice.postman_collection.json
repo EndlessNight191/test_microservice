@@ -274,12 +274,12 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhc2RmQGdtYWlsLmNvbSIsInR5cGVJZCI6ImVtYWlsIiwiaWF0IjoxNjcyOTA4OTY3LCJleHAiOjE2NzI5MDk1Njd9.GRYaMLAJhmWHfBfawIxjNWvoSonSRfnjOMi7F0SrHY8",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhc2RmQGdtYWlsLmNvbSIsInR5cGVJZCI6ImVtYWlsIiwiaWF0IjoxNjcyOTMzODMxLCJleHAiOjE2NzI5MzQ0MzF9.kAR-7_Gi0F7fzhO3BBuiLZ9WaTLWCf99dDavZDZ-Hgk",
 							"type": "string"
 						}
 					]
 				},
-				"method": "PUT",
+				"method": "GET",
 				"header": [],
 				"url": {
 					"raw": "{{base_url}}/api/general/logout?all=true",
