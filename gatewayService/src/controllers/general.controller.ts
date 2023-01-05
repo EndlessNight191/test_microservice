@@ -10,23 +10,17 @@ class GeneralController {
 
   public signIn = catchAsync(async (req: Request, res: Response) => {
     let dataResult: DataResult | any = {};
-    console.log(`${serviceAuth}/api/auth/signIn`)
-    const headers = {
-        "Host": 0,
-    }
-    const options = {
-      url: 'http://127.0.0.1:8080/api/auth/signIn',
-      headers: headers
-    }
-    await request.post(options, function (error, response, body) {
-      console.error('error:', error); // Print the error if one occurred
-      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-      console.log('body:', body); // Print the HTML for the Google homepage.
-      dataResult = body
-    });
+
+    await axios.post(`${serviceAuth}/api/auth/signIn`, req.body)
+      .then(result => dataResult = result.data)
+      .catch(e => {
+        dataResult.text = e.response?.data?.message || e.response.statusText;
+        dataResult.error = true;
+        dataResult.status = e.response.status;
+      })
 
     if(dataResult.error) return resSend(res, {data: dataResult}, Number(dataResult.status));
-    resSend(res, {data: dataResult});
+    resSend(res, {data: dataResult.data});
   })
 
   public signUp = catchAsync(async (req: Request, res: Response) => {
@@ -34,64 +28,60 @@ class GeneralController {
     await axios.post(`${serviceAuth}/api/auth/signUp`, req.body)
       .then(result => dataResult = result.data)
       .catch(e => {
-        dataResult.text = e.response.statusText;
+        dataResult.text = e.response?.data?.message || e.response.statusText;
         dataResult.error = true;
         dataResult.status = e.response.status;
       })
 
     if(dataResult.error) return resSend(res, {data: dataResult}, Number(dataResult.status));
-    resSend(res, {data: dataResult});
+    resSend(res, {data: dataResult.data});
   })
 
   public logout = catchAsync(async (req: Request, res: Response) => {
-    /*const config = req.configToken;*/
+    if(!req.query.all) return resSend(res, {message: 'not valid "all"'}, 400);
+
+    const config = req.configToken;
     let dataResult: DataResult | any = {};
-    await axios({
-      baseURL: serviceAuth,
-      url: `/api/auth/logout?all=${(req.query.all === 'true')}`,
-      method: 'put',
-      headers: {'X-Requested-With': 'XMLHttpRequest'},
-    })
+    await axios.put(`${serviceAuth}/api/auth/logout?all=${(req.query.all === 'true')}`, req.body, config)
       .then(result => dataResult = result.data)
       .catch(e => {
-        console.log(e)
-        dataResult.text = e.response.statusText;
+        dataResult.text = e.response?.data?.message || e.response.statusText;
         dataResult.error = true;
         dataResult.status = e.response.status;
       })
 
     if(dataResult.error) return resSend(res, {data: dataResult}, Number(dataResult.status));
-    resSend(res, {data: dataResult});
+    resSend(res, {data: dataResult.data});
   })
 
   public latency = catchAsync(async (req: Request, res: Response) => {
-    /*const config = req.configToken;*/
+    const config = req.configToken;
     let dataResult: DataResult | any = {};
-    await axios.get(`${serviceAuth}/api/general/latency`, /*config*/)
+    await axios.get(`${serviceAuth}/api/general/latency`, config)
       .then(result => dataResult = result.data)
       .catch(e => {
-        dataResult.text = e.response.statusText;
+        dataResult.text = e.response?.data?.message || e.response.statusText;
         dataResult.error = true;
         dataResult.status = e.response.status;
       })
 
     if(dataResult.error) return resSend(res, {data: dataResult}, Number(dataResult.status));
-    resSend(res, {data: dataResult});
+    resSend(res, {data: dataResult.data, accessToken: dataResult.accessToken || null});
   })
 
   public info = catchAsync(async (req: Request, res: Response) => {
-    /*const config = req.configToken;*/
+    const config = req.configToken;
     let dataResult: DataResult | any = {};
-    await axios.get(`${serviceAuth}/api/general/info`, /*config*/)
+    await axios.get(`${serviceAuth}/api/general/info`, config)
       .then(result => dataResult = result.data)
       .catch(e => {
-        dataResult.text = e.response.statusText;
+        dataResult.text = e.response?.data?.message || e.response.statusText;
         dataResult.error = true;
         dataResult.status = e.response.status;
       })
 
     if(dataResult.error) return resSend(res, {data: dataResult}, Number(dataResult.status));
-    resSend(res, {data: dataResult});
+    resSend(res, {data: dataResult.data, accessToken: dataResult.accessToken || null});
   })
 
 }

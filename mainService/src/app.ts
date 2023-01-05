@@ -11,6 +11,7 @@ import { NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS } from '@config';
 import { Routes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
+import request from "request";
 
 
 class App {
@@ -29,8 +30,7 @@ class App {
     this.initializeErrorHandling();
   }
 
-  public listen() {
-    /*RedisService.connect();*/
+  public async listen() {
     this.app.listen(this.port, () => {
       logger.info(`=================================`);
       logger.info(`======= ENV: ${this.env} =======`);
