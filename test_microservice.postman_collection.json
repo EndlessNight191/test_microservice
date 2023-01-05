@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "2ea2d4a0-7d98-4419-98e6-56f29b5a2877",
+		"name": "test_microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19731298"
+	},
+	"item": [
+		{
+			"name": "microservices (отдельно)",
+			"item": [
+				{
+					"name": "Регистрация",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{auth_url}}/api/auth/signUp",
+							"host": [
+								"{{auth_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Авторизация",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{auth_url}}/api/auth/signIn",
+							"host": [
+								"{{auth_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{auth_url}}/api/general/info",
+							"host": [
+								"{{auth_url}}"
+							],
+							"path": [
+								"api",
+								"general",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "рандомная фраза",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{random_phrase_url}}/api/randomPhrase",
+							"host": [
+								"{{random_phrase_url}}"
+							],
+							"path": [
+								"api",
+								"randomPhrase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "задержка до гугла",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{auth_url}}/api/general/latency",
+							"host": [
+								"{{auth_url}}"
+							],
+							"path": [
+								"api",
+								"general",
+								"latency"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{auth_url}}/api/auth/logout",
+							"host": [
+								"{{auth_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Регистрация",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"123123213\",\r\n    \"password\": \"123123123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/general/signUp",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"general",
+						"signUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Авторизация",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMjMxMjMyMTMiLCJ0eXBlSWQiOiJwaG9uZSIsImlhdCI6MTY3MjkxMTA2NywiZXhwIjoxNjcyOTExNjY3fQ.7c1FDYciFcWVzu7aL7BEpO5k07tRI1QTF9eXj15glm0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"asdf@gmail.com\",\r\n    \"password\": \"123123123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/general/signIn",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"general",
+						"signIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhc2RmQGdtYWlsLmNvbSIsInR5cGVJZCI6ImVtYWlsIiwiaWF0IjoxNjcyOTA3ODkwLCJleHAiOjE2NzI5MDg0OTB9.QjJI6qaeDDUxfUgNTBEOb0WXqL7upUdC4vpYNSIo2aY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/general/info",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"general",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "случайная фраза",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/randomPhrase",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"randomPhrase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "задержка до гугла",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhc2RmQGdtYWlsLmNvbSIsInR5cGVJZCI6ImVtYWlsIiwiaWF0IjoxNjcyOTA4NDIyLCJleHAiOjE2NzI5MDkwMjJ9.XNfomkCgbGljoE17Ue013onZCZ4nuQ0tsWxGhflJIVY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/general/latency",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"general",
+						"latency"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhc2RmQGdtYWlsLmNvbSIsInR5cGVJZCI6ImVtYWlsIiwiaWF0IjoxNjcyOTA4OTY3LCJleHAiOjE2NzI5MDk1Njd9.GRYaMLAJhmWHfBfawIxjNWvoSonSRfnjOMi7F0SrHY8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/general/logout?all=true",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"general",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "all",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "auth_url",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "random_phrase_url",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
